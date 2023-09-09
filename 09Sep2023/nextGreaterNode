@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int getLength(ListNode* head){
+        ListNode* temp = head;
+        int len = 0;
+        while(temp){
+            len++;
+            temp = temp->next;
+        }
+        return len;
+    }
+    vector<int> nextLargerNodes(ListNode* head) {
+        int len = getLength(head);
+        vector <int> ans(len,0);
+        stack <pair<int,int>> st;
+        int i = 0;
+
+        while(head){
+            while(!st.empty() && st.top().first<head->val){
+                int idx = st.top().second;
+                st.pop();
+                ans[idx] = head->val;
+            }
+            st.push({head->val,i++});
+            head=head->next;
+        }
+
+        return ans;
+    }
+};
