@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        vector <int> ans;
+        for(long long i=left;i<=right;i++){
+            long long n = i;
+            long long m = 0;
+            long long count = 0;
+            while(n){
+                long long last = n % 10;
+                if(last) if(i%last==0) m++;
+                count++;
+                n= n /10;
+            }
+            if(m==count) ans.push_back(i);
+        }
+        return ans;
+    }
+};
