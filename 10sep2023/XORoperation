@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int xorOperation(int n, int start) {
+        vector <int> nums;
+
+        for(int i=0;i<n;i++){
+            int temp = 2 * i + start;
+            nums.push_back(temp);
+        }
+
+        int ans = 0;
+
+        for(int i=0;i<n;i++){
+            ans = ans ^ nums[i];
+        }
+        return ans;
+    }
+};
