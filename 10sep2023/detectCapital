@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool small(string s){
+        for(int i=0;i<s.length();i++){
+            char ch = s[i];
+            if(ch>='A' && ch<='Z') return 0;
+        }
+        return 1;
+    }
+    bool capital(string s){
+        for(int i=1;i<s.length();i++){
+            char ch = s[i];
+            if(ch>='A' && ch<='Z') return 0;
+        }
+
+        if(s[0]>='A' && s[0]<='Z') return 1;
+        return 0;
+    }
+    bool detectCapitalUse(string word) {
+        if(small(word)) return 1;
+        if(capital(word)) return 1;
+
+        for(int i=0;i<word.length();i++){
+            if(word[i]>='a' && word[i]<='z') return 0;
+        }
+        return 1;
+    }
+};
