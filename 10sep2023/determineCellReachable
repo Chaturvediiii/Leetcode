@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) {
+        int first = abs(sx-fx);
+        int second = abs(sy-fy);
+
+        if(first==0 && second==0){
+            return t!=1;
+        }
+        if(t>=first && t>=second) return 1;
+        return 0;
+    }
+};
