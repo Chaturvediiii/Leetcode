@@ -1,0 +1,30 @@
+class Solution {
+public:
+    TreeNode* buildTree(int start,int end,vector <int> &nums){
+        if(start >= end) return NULL;
+
+        int maxi = -1;
+        int idx = -1;
+
+        for(int i=start;i<end;i++){
+            if(nums[i]>maxi) {
+                maxi = nums[i];
+                idx = i;
+            }
+        }
+
+        TreeNode* root = new TreeNode(maxi);
+
+        root->left = buildTree(start,idx,nums);
+        root->right = buildTree(idx+1,end,nums);
+
+        return root;
+    }
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        int start = 0;
+        int end = nums.size();
+
+        TreeNode* root = buildTree(start,end,nums);
+        return root;
+    }
+};
